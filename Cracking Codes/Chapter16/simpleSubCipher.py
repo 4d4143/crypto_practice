@@ -59,7 +59,7 @@ def translateMessage(key, message, mode):
 
     for symbol in message:
         if symbol.upper() in charsA:
-            symIndex = charsA.find(symbol.up)
+            symIndex = charsA.find(symbol.upper())
             if symbol.isupper():
                 translated += charsB[symIndex].upper()
             else:
