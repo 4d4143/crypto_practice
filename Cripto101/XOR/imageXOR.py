@@ -1,3 +1,10 @@
+# This little script will take the pictures circle.jpeg and triangle.jpeg
+# and will XOR them with square.jpeg. Afterwards, it will grab
+# both results and XOR one against the other.
+# We will see that from this we are able to derive
+# some if not all of the plaintext.
+# This is to showcase the danger of using multi-time pads.
+
 from PIL import Image
 from PIL import ImageChops
 
