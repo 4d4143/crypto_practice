@@ -1,3 +1,6 @@
+# So it turns out this is wrong. I have to fix it. We are directly given hex values.
+# I understood it as if we were being given a string and the having to convert it to hex values.
+
 from bitarray import bitarray
 from bitarray.util import ba2int
 
