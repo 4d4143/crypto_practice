@@ -18,5 +18,6 @@ for sequence in range(0, len(stringBits), 6):
     # We scan the bitarray 6 bits at a time
     b64stringList += base64mapping[(ba2int(stringBits[sequence:sequence+6]))]
     # We store the corresponding b64 char into b64stringlist
-
-print(''.join(b64stringList))  # Lets see the result
+    
+print(len(stringBits) % 6)
+# Lets see the result
