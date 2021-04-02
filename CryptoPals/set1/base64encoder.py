@@ -1,26 +1,23 @@
-# So it turns out this is wrong. I have to fix it. We are directly given hex values.
-# I understood it as if we were being given a string and the having to convert it to hex values.
+#!/usr/bin/python3
 
-from bitarray import bitarray
-from bitarray.util import ba2int
+from binascii import unhexlify
+import sys
+import base64
 
-base64mapping = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcd\
-efghijklmnopqrstuvwxyz0123456789+/"
 
-testString1 = "49276d206b696c6c696e6720796f757220627261696e206c\
-696b65206120706f69736f6e6f7573206d757368726f6f6d"
+def convertInputb64(stringInput):
+    try:
+        byte_seq = unhexlify(stringInput)
+        return base64.b64encode(byte_seq)
+    except ValueError:
+        print("Invalid character! Out of hex character range.")
+        sys.exit(1)
 
-stringBits = bitarray()
-# We create an unitialized bitarray
-stringBits.frombytes(testString1.encode('utf-8'))
-# We convert the string to bits
 
-b64stringList = []  # To store the corresponding b64 chars
-
-for sequence in range(0, len(stringBits), 6):
-    # We scan the bitarray 6 bits at a time
-    b64stringList += base64mapping[(ba2int(stringBits[sequence:sequence+6]))]
-    # We store the corresponding b64 char into b64stringlist
-    
-print(len(stringBits) % 6)
-# Lets see the result
+if __name__ == '__main__':
+    try:
+        shellInput = sys.argv[1]
+        print(convertInputb64(shellInput))
+    except IndexError:
+        print("No input was provided! Please provided a hex value.")
+        sys.exit(1)
