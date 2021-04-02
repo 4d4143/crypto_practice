@@ -18,7 +18,7 @@ if __name__ == '__main__':
         if test:
             bufferOne = convertInputHex(sys.argv[1])
             bufferTwo = convertInputHex(sys.argv[2])
-            print(hex(bufferOne ^ bufferTwo))
+            print("%x" % (bufferOne ^ bufferTwo))
         else:
             print("Buffers have different size!")
             sys.exit(0)
